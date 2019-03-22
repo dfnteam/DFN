@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.DFN.entity.TableFamaliyEntity" table="table_famaliy" schema="dfn">
+        <id name="famaliyId" column="famaliy_id"/>
+        <property name="famaliyName" column="famaliy_name"/>
+        <property name="famaliyInfo" column="famaliy_info"/>
+        <property name="famaliyOther" column="famaliy_other"/>
+    </class>
+</hibernate-mapping>

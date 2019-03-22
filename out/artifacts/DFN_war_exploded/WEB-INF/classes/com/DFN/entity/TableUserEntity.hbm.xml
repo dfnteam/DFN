@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.DFN.entity.TableUserEntity" table="table_user" schema="dfn">
+        <id name="userId" column="user_id"/>
+        <property name="userName" column="user_name"/>
+        <property name="userNickname" column="user_nickname"/>
+        <property name="userPassword" column="user_password"/>
+        <property name="userQq" column="user_QQ"/>
+        <property name="userMail" column="user_mail"/>
+        <property name="userType" column="user_type"/>
+        <property name="userFamaliyId" column="user_famaliy_id"/>
+        <property name="userOther" column="user_other"/>
+    </class>
+</hibernate-mapping>
