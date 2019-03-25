@@ -9,10 +9,11 @@
         <property name="userName" column="user_name"/>
         <property name="userNickname" column="user_nickname"/>
         <property name="userPassword" column="user_password"/>
+        <property name="userSex" column="user_sex"/>
+        <property name="userBirthday" column="user_birthday"/>
         <property name="userQq" column="user_QQ"/>
         <property name="userMail" column="user_mail"/>
         <property name="userType" column="user_type"/>
-        <property name="userFamaliyId" column="user_famaliy_id"/>
         <property name="userOther" column="user_other"/>
     </class>
 </hibernate-mapping>

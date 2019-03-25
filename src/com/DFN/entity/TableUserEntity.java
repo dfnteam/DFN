@@ -1,10 +1,12 @@
 package com.DFN.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "table_user", schema = "dfn", catalog = " ")
+@Table(name = "table_user", schema = "dfn", catalog = "")
 public class TableUserEntity {
     private int userId;
     private String userName;
@@ -15,6 +17,9 @@ public class TableUserEntity {
     private int userType;
     private Integer userFamaliyId;
     private String userOther;
+    private String userSex;
+    private Date userBirthday;
+
 
     @Id
     @Column(name = "user_id")
@@ -126,5 +131,25 @@ public class TableUserEntity {
     public int hashCode() {
 
         return Objects.hash(userId, userName, userNickname, userPassword, userQq, userMail, userType, userFamaliyId, userOther);
+    }
+
+    @Basic
+    @Column(name = "user_sex")
+    public String getUserSex() {
+        return userSex;
+    }
+
+    public void setUserSex(String userSex) {
+        this.userSex = userSex;
+    }
+
+    @Basic
+    @Column(name = "user_birthday")
+    public Date getUserBirthday() {
+        return userBirthday;
+    }
+
+    public void setUserBirthday(Date userBirthday) {
+        this.userBirthday = userBirthday;
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
 import java.util.List;
 
 @Controller
@@ -47,12 +48,13 @@ public class LoginAndRegiserService {
 
     @RequestMapping(value = "/register", produces = {"text/html;charset=UTF-8;", "application/json;charset=UTF-8;"})
     @ResponseBody
-    public String register(String name, String password, int QQ, String mail, String type) {
+    public String register(String name, String password, String QQstring, String mail, String type,String sex,String birthday) throws ParseException {
+
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
 
         UserService userService = new UserService();
-        userService.addUser(name, password, QQ, mail, type);
+        userService.addUser(name, password, QQstring, mail, type,sex, birthday);
 
         BaseDaoImpl baseDao = new BaseDaoImpl();
         List listResult = baseDao.getAll(TableUserEntity.class);

@@ -2,8 +2,7 @@ package com.DFN.service;
 
 import com.DFN.dao.impl.BaseDaoImpl;
 import com.DFN.entity.TableUserEntity;
-import com.DFN.util.HibernateUtil;
-import com.DFN.util.ToJosn;
+import com.DFN.util.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 @Controller
 @CrossOrigin
@@ -19,7 +20,9 @@ public class UserService {
     //增加user
     @RequestMapping(value = "/addUser",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
     @ResponseBody
-    public void addUser(String name, String password, int QQ, String mail, String type) {
+    public void addUser(String name, String password, String QQstring, String mail, String type,String sex,String birthday) throws ParseException {
+        IntToString intToString=new IntToString();
+        int QQ= intToString.stringToInt(QQstring);
 
         String nickname = "DFN-user";
 
@@ -40,6 +43,11 @@ public class UserService {
         userEntity.setUserMail(mail);
         userEntity.setUserNickname(nickname);
         userEntity.setUserPassword(password);
+
+        userEntity.setUserSex(sex);
+        StrToDate strToDate=new StrToDate();
+        Date date= strToDate.strToDate(birthday);
+        userEntity.setUserBirthday(date);
         userEntity.setUserQq(QQ);
         userEntity.setUserType(user_type);
 
@@ -116,7 +124,10 @@ public class UserService {
     //更新user
     @RequestMapping(value = "/updateUser",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
     @ResponseBody
-    public String updateUser(int userId, String name, String nickname, String password, int QQ, String mail, String type) {
+    public String updateUser(int userId, String name, String nickname, String password, String QQstring, String mail, String type,String sex,String birthday) throws ParseException {
+        IntToString intToString=new IntToString();
+        int QQ= intToString.stringToInt(QQstring);
+
         int user_type = 0;
 
         if ("爸爸".equals(type)) {
@@ -146,6 +157,10 @@ public class UserService {
             userEntity.setUserMail(mail);
             userEntity.setUserNickname(nickname);
             userEntity.setUserPassword(password);
+            userEntity.setUserSex(sex);
+            StrToDate strToDate=new StrToDate();
+            Date date= strToDate.strToDate(birthday);
+            userEntity.setUserBirthday(date);
             userEntity.setUserQq(QQ);
             userEntity.setUserType(user_type);
 
