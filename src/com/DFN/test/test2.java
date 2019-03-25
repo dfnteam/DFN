@@ -2,10 +2,12 @@ package com.DFN.test;
 
 import com.DFN.entity.TableAlbumEntity;
 import com.DFN.entity.TableUserEntity;
+import com.DFN.service.LoginAndRegiserService;
 import com.DFN.service.ShareService;
 import com.DFN.service.UserService;
 import com.DFN.util.GetDate;
 import com.DFN.util.HibernateUtil;
+import com.DFN.util.IntToString;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -38,8 +40,8 @@ public class test2 {
 //       System.out.println(s);
 
       //------------3---------user显示功能测试
-        UserService userService=new UserService();
-        userService.getAllUser();
+//        UserService userService=new UserService();
+//        userService.getAllUser();
 
         //-----------4-------user添加功能测试
 
@@ -56,6 +58,18 @@ public class test2 {
 //        ShareService shareService =new ShareService();
 //        String s=shareService.getAllShare();
 //        System.out.println(s);
+
+
+        //--------------8--------------
+//        LoginAndRegiserService service=new LoginAndRegiserService();
+//        String s=service.login(1,"123456");
+//
+//        System.out.println(s);
+
+        IntToString intToString=new IntToString();
+
+        int i=  intToString.stringToInt("");
+        System.out.println(i);
 
     }
 

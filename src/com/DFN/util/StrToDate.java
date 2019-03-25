@@ -1,8 +1,9 @@
 package com.DFN.util;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.sql.Date;
 
 public class StrToDate {
 
@@ -16,8 +17,15 @@ public class StrToDate {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        java.sql.Date date = new java.sql.Date(d.getTime());
+        Date date = new Date(d.getTime());
         return date;
+    }
+    public Timestamp strToTimestamp(String dateString) throws ParseException {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date= format.parse(dateString);
+        Timestamp timestamp = new Timestamp(date.getTime());
+        return timestamp;
     }
 
 }

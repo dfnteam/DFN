@@ -1,7 +1,7 @@
 package com.DFN.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+
 import java.sql.Timestamp;
 import java.util.Objects;
 
@@ -18,7 +18,7 @@ public class TableUserEntity {
     private Integer userFamaliyId;
     private String userOther;
     private String userSex;
-    private Date userBirthday;
+    private Timestamp userBirthday;
 
 
     @Id
@@ -145,11 +145,11 @@ public class TableUserEntity {
 
     @Basic
     @Column(name = "user_birthday")
-    public Date getUserBirthday() {
+    public Timestamp getUserBirthday() {
         return userBirthday;
     }
 
-    public void setUserBirthday(Date userBirthday) {
+    public void setUserBirthday(Timestamp userBirthday) {
         this.userBirthday = userBirthday;
     }
 }

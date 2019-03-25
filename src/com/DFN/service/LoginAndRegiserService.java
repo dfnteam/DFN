@@ -25,7 +25,12 @@ public class LoginAndRegiserService {
 
 
         BaseDaoImpl baseDao = new BaseDaoImpl();
-        TableUserEntity result = baseDao.get(TableUserEntity.class, userId);
+
+        TableUserEntity result= baseDao.get(TableUserEntity.class,userId);
+//        List listResult =baseDao.getListBySQL("SELECT * FROM table_user WHERE user_id="+userId+" and user_password="+password,TableUserEntity.class);
+
+
+
 
         tx.commit();
 

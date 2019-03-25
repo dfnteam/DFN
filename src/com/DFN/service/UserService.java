@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.sql.Date;
@@ -46,8 +47,9 @@ public class UserService {
 
         userEntity.setUserSex(sex);
         StrToDate strToDate=new StrToDate();
-        Date date= strToDate.strToDate(birthday);
-        userEntity.setUserBirthday(date);
+        Timestamp timestamp=strToDate.strToTimestamp(birthday);
+        userEntity.setUserBirthday(timestamp);
+
         userEntity.setUserQq(QQ);
         userEntity.setUserType(user_type);
 
@@ -159,8 +161,8 @@ public class UserService {
             userEntity.setUserPassword(password);
             userEntity.setUserSex(sex);
             StrToDate strToDate=new StrToDate();
-            Date date= strToDate.strToDate(birthday);
-            userEntity.setUserBirthday(date);
+            Timestamp timestamp=strToDate.strToTimestamp(birthday);
+            userEntity.setUserBirthday(timestamp);
             userEntity.setUserQq(QQ);
             userEntity.setUserType(user_type);
 
