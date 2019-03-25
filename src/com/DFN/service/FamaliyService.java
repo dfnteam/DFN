@@ -7,13 +7,17 @@ import com.DFN.util.ToJosn;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
 @Controller
+@CrossOrigin
 public class FamaliyService {
-    @RequestMapping("/addFamaliy")
+    @RequestMapping(value = "/addFamaliy",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void addFamaliy(String famaliyName, String famaliyInfo) {
 
         TableFamaliyEntity famaliyEntity = new TableFamaliyEntity();
@@ -30,7 +34,8 @@ public class FamaliyService {
         tx.commit();
     }
 
-    @RequestMapping("/delFamaliy")
+    @RequestMapping(value = "/delFamaliy",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delFamaliy(int famaliyId) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -42,7 +47,8 @@ public class FamaliyService {
         tx.commit();
     }
 
-    @RequestMapping("/delAllFamaliy")
+    @RequestMapping(value = "/delAllFamaliy",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delAllFamaliy() {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -54,7 +60,8 @@ public class FamaliyService {
     }
 
 
-    @RequestMapping("/getAllFamaliy")
+    @RequestMapping(value = "/getAllFamaliy",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String getAllFamaliy() {
 
         Session session = HibernateUtil.getSessionobject();
@@ -82,7 +89,8 @@ public class FamaliyService {
 
     }
 
-    @RequestMapping("/updateFamaliy")
+    @RequestMapping(value = "/updateFamaliy",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String updateFamaliy(int famaliyId, String famaliyName, String famaliyInfo) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();

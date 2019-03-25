@@ -7,13 +7,17 @@ import com.DFN.util.ToJosn;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
 @Controller
+@CrossOrigin
 public class PasswordService {
-    @RequestMapping("/addPassword")
+    @RequestMapping(value = "/addPassword",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void addPassword(String passwordName, String passwordContent) {
 
 
@@ -31,7 +35,8 @@ public class PasswordService {
         tx.commit();
     }
 
-    @RequestMapping("/delPassword")
+    @RequestMapping(value = "/delPassword",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delPassword(int passwordId) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -43,7 +48,8 @@ public class PasswordService {
         tx.commit();
     }
 
-    @RequestMapping("/delAllPassword")
+    @RequestMapping(value = "/delAllPassword",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delAllPassword() {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -55,7 +61,8 @@ public class PasswordService {
     }
 
 
-    @RequestMapping("/getAllPassword")
+    @RequestMapping(value = "/getAllPassword",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String getAllPassword() {
 
         Session session = HibernateUtil.getSessionobject();
@@ -83,7 +90,8 @@ public class PasswordService {
 
     }
 
-    @RequestMapping("/updatePassword")
+    @RequestMapping(value = "/updatePassword",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String updatePassword(int passwordId, String passwordName, String passwordContent) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();

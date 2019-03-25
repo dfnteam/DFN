@@ -8,14 +8,18 @@ import com.DFN.util.ToJosn;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 @Controller
+@CrossOrigin
 public class ShareService {
-    @RequestMapping("/addShare")
+    @RequestMapping(value = "/addShare",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void addShare(String shareName, String shareContent) {
 
 
@@ -35,7 +39,8 @@ public class ShareService {
         tx.commit();
     }
 
-    @RequestMapping("/delShare")
+    @RequestMapping(value = "/delShare",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delShare(int ShareId) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -47,7 +52,8 @@ public class ShareService {
         tx.commit();
     }
 
-    @RequestMapping("/delAllShare")
+    @RequestMapping(value = "/delAllShare",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delAllShare() {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -59,7 +65,8 @@ public class ShareService {
     }
 
 
-    @RequestMapping("/getAllShare")
+    @RequestMapping(value = "/getAllShare",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String getAllShare() {
 
         Session session = HibernateUtil.getSessionobject();
@@ -87,7 +94,8 @@ public class ShareService {
 
     }
 
-    @RequestMapping("/updateShare")
+    @RequestMapping(value = "/updateShare",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String updateShare(int shareId, String shareName, String shareContent) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();

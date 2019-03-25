@@ -8,14 +8,18 @@ import com.DFN.util.ToJosn;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 @Controller
+@CrossOrigin
 public class BillService {
-    @RequestMapping("/addBill")
+    @RequestMapping(value = "/addBill",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void addBill(String billGoods, int billPrice) {
 
 
@@ -35,7 +39,8 @@ public class BillService {
         tx.commit();
     }
 
-    @RequestMapping("/delBill")
+    @RequestMapping(value = "/delBill",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delBill(int billId) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -47,7 +52,8 @@ public class BillService {
         tx.commit();
     }
 
-    @RequestMapping("/delAllBill")
+    @RequestMapping(value = "/delAllBill",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delAllBill() {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -59,7 +65,8 @@ public class BillService {
     }
 
 
-    @RequestMapping("/getAllBill")
+    @RequestMapping(value = "/getAllBill",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String getAllBill() {
 
         Session session = HibernateUtil.getSessionobject();
@@ -87,7 +94,8 @@ public class BillService {
 
     }
 
-    @RequestMapping("/updateBill")
+    @RequestMapping(value = "/updateBill",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String updateBill(int billId, String billGoods, int billPrice) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();

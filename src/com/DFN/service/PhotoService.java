@@ -7,13 +7,17 @@ import com.DFN.util.ToJosn;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
 @Controller
+@CrossOrigin
 public class PhotoService {
-    @RequestMapping("/addPhoto")
+    @RequestMapping(value = "/addPhoto",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void addPhoto(String photoAdress) {
 
 
@@ -30,7 +34,8 @@ public class PhotoService {
         tx.commit();
     }
 
-    @RequestMapping("/delPhoto")
+    @RequestMapping(value = "/delPhoto",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delPhoto(int photoId) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -42,7 +47,8 @@ public class PhotoService {
         tx.commit();
     }
 
-    @RequestMapping("/delAllPhoto")
+    @RequestMapping(value = "/delAllPhoto",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delAllPhoto() {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -54,7 +60,8 @@ public class PhotoService {
     }
 
 
-    @RequestMapping("/getAllPhoto")
+    @RequestMapping(value = "/getAllPhoto",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String getAllPhoto() {
 
         Session session = HibernateUtil.getSessionobject();
@@ -66,12 +73,12 @@ public class PhotoService {
 
         tx.commit();
 
-        List<TablePhotoEntity> TablephotoEntityList = new ArrayList<TablePhotoEntity>();
+        List<TablePhotoEntity> TablePhotoEntityList = new ArrayList<TablePhotoEntity>();
 
         for (int i = 0; i < resultList.size(); i++) {
 
-            TablephotoEntityList.add(i, (TablePhotoEntity) resultList.get(i));
-            System.out.println("值：" + (TablephotoEntityList.get(i)).getPhotoAddress());
+            TablePhotoEntityList.add(i, (TablePhotoEntity) resultList.get(i));
+            System.out.println("值：" + (TablePhotoEntityList.get(i)).getPhotoAddress());
         }
 
         ToJosn toJosn = new ToJosn();
@@ -82,7 +89,8 @@ public class PhotoService {
 
     }
 
-    @RequestMapping("/updatePhoto")
+    @RequestMapping(value = "/updatePhoto",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String updatePhoto(int photoId, String photoAddress) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();

@@ -8,15 +8,19 @@ import com.DFN.util.ToJosn;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@CrossOrigin
 public class AlbumService {
-    @RequestMapping("/addAlbum")
+    @RequestMapping(value = "/addAlbum",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void addAlbum(String albumName) {
 
 
@@ -35,7 +39,8 @@ public class AlbumService {
         tx.commit();
     }
 
-    @RequestMapping("/delAlbum")
+    @RequestMapping(value = "/delAlbum",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delAlbum(int albumId) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -47,7 +52,8 @@ public class AlbumService {
         tx.commit();
     }
 
-    @RequestMapping("/delAllAlbum")
+    @RequestMapping(value = "/delAllAlbum",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delAllAlbum() {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -59,7 +65,8 @@ public class AlbumService {
     }
 
 
-    @RequestMapping("/getAllAlbum")
+    @RequestMapping(value = "/getAllAlbum",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String getAllAlbum() {
 
         Session session = HibernateUtil.getSessionobject();
@@ -87,7 +94,8 @@ public class AlbumService {
 
     }
 
-    @RequestMapping("/updateAlbum")
+    @RequestMapping(value = "/updateAlbum",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String updateAlbum(int albumId, String albumName) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();

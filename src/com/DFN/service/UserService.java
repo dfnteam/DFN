@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 import java.util.List;
 @Controller
+@CrossOrigin
 public class UserService {
     //增加user
-    /*@CrossOrigin*/
-    @RequestMapping("/addUser")
+    @RequestMapping(value = "/addUser",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void addUser(String name, String password, int QQ, String mail, String type) {
 
         String nickname = "DFN-user";
@@ -53,21 +54,23 @@ public class UserService {
 
 
     //删除user
-    @RequestMapping("/delUser")
-    public void delUser(int userid) {
+    @RequestMapping(value = "/delUser",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
+    public void delUser(int userId) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
 
 
         BaseDaoImpl baseDao = new BaseDaoImpl();
-        baseDao.deleteById(TableUserEntity.class, userid);
+        baseDao.deleteById(TableUserEntity.class, userId);
 
         tx.commit();
 
     }
 
     //删除全部user
-    @RequestMapping("/deleteAllUser")
+    @RequestMapping(value = "/deleteAllUser",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void deleteAllUser() {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -79,7 +82,7 @@ public class UserService {
     }
 
     //查询所有user
-    @RequestMapping("/getAllUser")
+    @RequestMapping(value = "/getAllUser",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
     @ResponseBody
     public String getAllUser() {
 
@@ -111,8 +114,9 @@ public class UserService {
 
 
     //更新user
-    @RequestMapping("/updateUser")
-    public String updateUser(int userid, String name, String nickname, String password, int QQ, String mail, String type) {
+    @RequestMapping(value = "/updateUser",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
+    public String updateUser(int userId, String name, String nickname, String password, int QQ, String mail, String type) {
         int user_type = 0;
 
         if ("爸爸".equals(type)) {
@@ -130,14 +134,14 @@ public class UserService {
 
 
         BaseDaoImpl baseDao = new BaseDaoImpl();
-        TableUserEntity result = baseDao.get(TableUserEntity.class, userid);
+        TableUserEntity result = baseDao.get(TableUserEntity.class, userId);
 
 
         if (result != null) {
 
 
             TableUserEntity userEntity = new TableUserEntity();
-            userEntity.setUserId(userid);
+            userEntity.setUserId(userId);
             userEntity.setUserName(name);
             userEntity.setUserMail(mail);
             userEntity.setUserNickname(nickname);

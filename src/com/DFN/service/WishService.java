@@ -8,6 +8,7 @@ import com.DFN.util.ToJosn;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,13 +16,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.ArrayList;
 import java.util.List;
 @Controller
+@CrossOrigin
 public class WishService {
-    @RequestMapping("/addWish")
-    public void addWish(String wishNama, int wishpublic, int state) {
+    @RequestMapping(value = "/addWish",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
+    public void addWish(String wishName, int wishPublic, int state) {
         TableWishEntity wishEntity = new TableWishEntity();
 
-        wishEntity.setWishName(wishNama);
-        wishEntity.setWishPublic(wishpublic);
+        wishEntity.setWishName(wishName);
+        wishEntity.setWishPublic(wishPublic);
         wishEntity.setWishState(0);
 
         Session session = HibernateUtil.getSessionobject();
@@ -33,7 +36,8 @@ public class WishService {
         tx.commit();
     }
 
-    @RequestMapping("/delWish")
+    @RequestMapping(value = "/delWish",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delWish(int wishId) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -45,7 +49,8 @@ public class WishService {
         tx.commit();
     }
 
-    @RequestMapping("/delAllWish")
+    @RequestMapping(value = "/delAllWish",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public void delAllWish() {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
@@ -57,7 +62,8 @@ public class WishService {
     }
 
 
-    @RequestMapping("/getAllWish")
+    @RequestMapping(value = "/getAllWish",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String getAllWish() {
 
         Session session = HibernateUtil.getSessionobject();
@@ -85,7 +91,8 @@ public class WishService {
 
     }
 
-    @RequestMapping("/updateWish")
+    @RequestMapping(value = "/updateWish",produces = { "text/html;charset=UTF-8;", "application/json;charset=UTF-8;" })
+    @ResponseBody
     public String updateWish(int wishId, String wishNama, int wishpublic, int state) {
         Session session = HibernateUtil.getSessionobject();
         Transaction tx = session.beginTransaction();
